@@ -23,7 +23,7 @@ Step:
 
 1. npm install admin-lte --save
 2. Copy
-
+      ```
       "styles": [
         "src/styles.css",
         "node_modules/admin-lte/plugins/fontawesome-free/css/all.css",
@@ -42,6 +42,5 @@ Step:
         "node_modules/admin-lte/plugins/chart.js/Chart.js",
         "node_modules/admin-lte/dist/js/pages/dashboard2.js"
       ]
-      
-      
+      ```
 to angular.json
