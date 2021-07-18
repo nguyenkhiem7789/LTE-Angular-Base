@@ -6,6 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 `ng serve --open --port 4200` for a dev server.
 
+`ng build` for build server.
+
 `ng generate module module-name` to generate a new module.
 
 `ng generate component component-name` to generate a new component.
