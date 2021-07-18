@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=dlBb1Z_8FiI
 LTE Admin: 
 https://adminlte.io/themes/v3/
 
-Step: 
+Step Implement: 
 
 1. npm install admin-lte --save
 2. Copy
