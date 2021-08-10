@@ -10,13 +10,13 @@ const routes: Routes = [
       {
         path: 'chart',
         loadChildren: () =>
-          import('.././chart/chart.module').then((m) => m.ChartModule),
+          import('../modules/chart/chart.module').then((m) => m.ChartModule),
       },
       {
         path: 'contactus',
         loadChildren: () =>
-          import('../contactus/contactus.module').then((m) => m.ContactusModule),
-      },
+          import('../modules/contactus/contactus.module').then((m) => m.ContactusModule),
+      }
     ]
   },
 ];
