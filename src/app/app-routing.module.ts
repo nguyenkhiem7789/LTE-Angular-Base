@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChartComponent } from './modules/chart/chart.component';
-import { ContatusComponent } from './modules/contactus/contatus.component';
-import { MainComponent } from './main/main.component';
+import {LoginComponent} from './auth/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./main/main.module').then((m) => m.MainModule),
+    component: LoginComponent,
   },
   {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    path: 'test',
+    loadChildren: () =>
+      import('./test/test.module').then((m) => m.TestModule),
+  },
+  {
+    path: 'main',
+    loadChildren: () =>
+      import('./main/main.module').then((m) => m.MainModule),
   },
   { path: '**', redirectTo: 'error/404' },
 ];
