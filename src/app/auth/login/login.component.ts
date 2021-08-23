@@ -12,11 +12,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-     //this.router.navigate(['/main']);
   }
 
   ngAfterViewInit(): void {
-    //this.router.navigateByUrl('/main');
   }
 
   onLogin(event: Event): void {

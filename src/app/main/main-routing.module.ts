@@ -8,15 +8,20 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'chart',
+        path: 'user',
         loadChildren: () =>
-          import('../modules/chart/chart.module').then((m) => m.ChartModule),
+          import('../modules/user/user.module').then((m) => m.UserModule),
       },
       {
-        path: 'contactus',
+        path: 'role',
         loadChildren: () =>
-          import('../modules/contactus/contactus.module').then((m) => m.ContactusModule),
-      }
+          import('../modules/role/role.module').then((m) => m.RoleModule),
+      },
+      {
+        path: 'emoji-mart',
+        loadChildren: () =>
+          import('../modules/emoji-mart/emoji-mart.module').then((m) => m.EmojiMartModule),
+      },
     ]
   },
 ];

@@ -1,0 +1,27 @@
+.title {
+  height: 60px;
+  align-items: center;
+  margin: 0.5rem 0;
+  font-size: 20px;
+}
+
+.card-toolbar {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+}
+
+.align-items-start {
+  -ms-flex-align: start !important;
+  align-items: flex-start !important;
+}
+
+.d-inline-flex {
+  display: inline-flex !important;
+}

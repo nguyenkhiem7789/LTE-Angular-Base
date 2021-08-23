@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {TestComponent} from './test.component';
+import { RoleComponent } from './role.component';
 import {RouterModule} from '@angular/router';
-import {ChartComponent} from '../modules/chart/chart.component';
+import {EmojiMartComponent} from '../emoji-mart/emoji-mart.component';
+
+
 
 @NgModule({
   declarations: [
-    TestComponent
+    RoleComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: TestComponent,
+        component: RoleComponent,
       },
     ]),
   ]
 })
-export class TestModule { }
+export class RoleModule { }

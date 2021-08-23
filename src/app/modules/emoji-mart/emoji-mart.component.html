@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <p>emoji-mart works!</p>
+
+  <input placeholder="Type a message. Hit Enter to send" type="text" (blur)="onBlur()" (focus)="onFocus()"
+         name="message" [(ngModel)]="message"  [ngModelOptions]="{standalone: true}">
+  <button (click) ="toggleEmojiPicker()"> 😀</button>
+  <br>
+  <emoji-mart class="emoji-mart" set="{{set}}" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)" title="Pick your emoji…"></emoji-mart>
+  {{ message }}
+</div>
