@@ -11,7 +11,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class UserAddChangeDialogComponent extends ModuleBaseComponent implements OnInit {
 
   user = {
+    id: this.data?.id ?? '',
     fullName: this.data?.fullName ?? '',
+    email: this.data?.email ?? '',
     password: this.data?.password ?? ''
   };
   isSubmit = false;
@@ -49,10 +51,12 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
     }
     this.isSubmit = false;
     const request = {
+      id: this.user.id,
       fullName: this.user.fullName,
+      email: this.user.email,
       password: this.user.password
     };
-    if (this.isChange) {
+    if (!this.isChange) {
       this.action(this.service.add(request), function(response) {
         console.log(response);
         this.dialogRef.close(true);
@@ -60,6 +64,7 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
     } else {
       this.action(this.service.change(request), function(response) {
         console.log(response);
+        this.dialogRef.close(true);
       }.bind(this));
     }
   }

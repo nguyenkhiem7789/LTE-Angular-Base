@@ -28,6 +28,7 @@
     <tr>
       <th scope="col">STT</th>
       <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
       <th scope="col" class="text-right">Action</th>
     </tr>
     </thead>
@@ -35,6 +36,7 @@
     <tr *ngFor="let user of users; let i = index" class="table-row">
       <td>{{i + 1}}</td>
       <td>{{user.fullName}}</td>
+      <td>{{user.email}}</td>
       <td class="text-right">
         <button class="btn" (click)="edit($event, user)">
           <i class="fas fa-edit"></i>
