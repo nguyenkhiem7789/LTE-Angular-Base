@@ -16,4 +16,8 @@ export class UserService {
   add(request) {
     return this.http.post('https://localhost:44393/Users/Add', request);
   }
+
+  change(request) {
+    return this.http.post('https://localhost:44393/Users/Change', request);
+  }
 }

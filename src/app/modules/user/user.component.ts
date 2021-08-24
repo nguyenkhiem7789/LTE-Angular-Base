@@ -40,20 +40,28 @@ export class UserComponent extends ModuleBaseComponent implements OnInit, AfterV
     }.bind(this));
   }
 
-  edit(event: Event): void {
+  create(event: Event): void {
     event.preventDefault();
+    this.openAddOrChangeDialog();
+  }
+
+  edit(event: Event, user): void {
+    event.preventDefault();
+    this.openAddOrChangeDialog(user);
   }
 
   delete(event: Event): void {
     event.preventDefault();
   }
 
-  openAddOrChangeDialog(event: Event): void {
-    event.preventDefault();
+  openAddOrChangeDialog(user = null): void {
     const dialogRef = this.dialog.open(UserAddChangeDialogComponent, {
       panelClass: 'my-full-screen-dialog',
       width: '50%',
       disableClose: true,
+      data: {
+        ...user
+      },
     });
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ModuleBaseComponent} from '../../module-base.component';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../../../services/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -10,13 +10,17 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class UserAddChangeDialogComponent extends ModuleBaseComponent implements OnInit {
 
-  fullName = '';
-  password = '';
+  user = {
+    fullName: this.data?.fullName ?? '',
+    password: this.data?.password ?? ''
+  };
   isSubmit = false;
+  isChange;
 
   constructor(
     dialog: MatDialog,
     snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private service: UserService,
     private dialogRef: MatDialogRef<UserAddChangeDialogComponent>
   ) {
@@ -24,15 +28,15 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
   }
 
   ngOnInit(): void {
+    this.isChange = this.data?.fullName.length > 0;
   }
 
   validateFullName(): boolean {
-    return this.fullName.length > 0;
+    return this.user.fullName.length > 0;
   }
 
   validatePassword(): boolean {
-    console.log(this.password);
-    return this.password.length > 0;
+    return this.user.password.length > 0;
   }
 
   addOrChangeUser(): void {
@@ -40,18 +44,24 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
     if (!this.validateFullName()) {
       return;
     }
-    if (!this.validatePassword()) {
+    if (!this.isChange && !this.validatePassword()) {
       return;
     }
     this.isSubmit = false;
     const request = {
-      fullName: this.fullName,
-      password: this.password
+      fullName: this.user.fullName,
+      password: this.user.password
     };
-    this.action(this.service.add(request), function(response) {
-      console.log(response);
-      this.dialogRef.close(true);
-    }.bind(this));
+    if (this.isChange) {
+      this.action(this.service.add(request), function(response) {
+        console.log(response);
+        this.dialogRef.close(true);
+      }.bind(this));
+    } else {
+      this.action(this.service.change(request), function(response) {
+        console.log(response);
+      }.bind(this));
+    }
   }
 
   close(): void {

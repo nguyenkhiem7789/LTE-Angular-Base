@@ -3,13 +3,13 @@
   <form>
     <div class="form-group">
       <label>Full Name</label>
-      <input type="text" class="form-control" placeholder="Enter full name" [(ngModel)]="this.fullName" [ngModelOptions]="{standalone: true}"
+      <input type="text" class="form-control" placeholder="Enter full name" [(ngModel)]="this.user.fullName" [ngModelOptions]="{standalone: true}"
              [class.is-invalid]="!this.validateFullName() && this.isSubmit">
       <span *ngIf="!this.validateFullName() && this.isSubmit" class="invalid-feedback">Full name is required</span>
     </div>
-    <div class="form-group">
+    <div *ngIf="!isChange" class="form-group">
       <label>Password</label>
-      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="this.password" [ngModelOptions]="{standalone: true}"
+      <input type="password" class="form-control" placeholder="Password" [(ngModel)]="this.user.password" [ngModelOptions]="{standalone: true}"
              [class.is-invalid]="!this.validatePassword() && this.isSubmit">
       <span *ngIf="!this.validatePassword() && this.isSubmit" class="invalid-feedback">Password is required</span>
     </div>

@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <!-- Header -->
   <nav class="navbar navbar-expand-lg">
-    <h3 class="navbar-brand">User</h3>
+    <h3 class="navbar-brand">Users Management</h3>
     <div class="collapse navbar-collapse">
       <div class="navbar-nav mr-auto">
       </div>
       <form class="form-inline">
         <button class="btn btn-primary" type="submit" (click)="search($event)">Search</button>
-        <button class="btn btn-info ml-2" type="submit" (click)="openAddOrChangeDialog($event)">Add User</button>
+        <button class="btn btn-info ml-2" type="submit" (click)="create($event)">Add User</button>
       </form>
     </div>
   </nav>
@@ -23,7 +23,7 @@
   </div>
 
   <!-- Body -->
-  <table class="table">
+  <table class="table table-bordered">
     <thead>
     <tr>
       <th scope="col">STT</th>
@@ -36,10 +36,10 @@
       <td>{{i + 1}}</td>
       <td>{{user.fullName}}</td>
       <td class="text-right">
-        <button class="btn" (click)="edit($event)">
+        <button class="btn" (click)="edit($event, user)">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="btn" (click)="delete($event)">
+        <button class="btn ml-2" (click)="delete($event)">
           <i class="fas fa-trash-alt"></i>
         </button>
       </td>
