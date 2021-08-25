@@ -18,6 +18,11 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
   };
   isSubmit = false;
   isChange;
+  Status = {
+    Deleted: 0,
+    Active: 1,
+    Change: 2
+  };
 
   constructor(
     dialog: MatDialog,
@@ -54,7 +59,8 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
       id: this.user.id,
       fullName: this.user.fullName,
       email: this.user.email,
-      password: this.user.password
+      password: this.user.password,
+      status: this.isChange ? this.Status.Change : this.Status.Active
     };
     if (!this.isChange) {
       this.action(this.service.add(request), function(response) {

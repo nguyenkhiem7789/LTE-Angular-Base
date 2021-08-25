@@ -9,6 +9,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserService} from './services/user.service';
 import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {ShareModule} from './share/share.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     MatDialogModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ShareModule,
+    FormsModule,
   ],
   providers: [
     UserService

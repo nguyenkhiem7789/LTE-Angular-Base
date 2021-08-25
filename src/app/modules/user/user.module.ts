@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import { UserAddChangeDialogComponent } from './user-add-change-dialog/user-add-change-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {FormsModule} from '@angular/forms';
       },
     ]),
     MatDialogModule,
+    MatSnackBarModule,
     FormsModule,
   ]
 })

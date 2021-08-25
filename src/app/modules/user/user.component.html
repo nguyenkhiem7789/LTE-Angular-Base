@@ -29,6 +29,7 @@
       <th scope="col">STT</th>
       <th scope="col">Full Name</th>
       <th scope="col">Email</th>
+      <th scope="col">Status</th>
       <th scope="col" class="text-right">Action</th>
     </tr>
     </thead>
@@ -37,11 +38,12 @@
       <td>{{i + 1}}</td>
       <td>{{user.fullName}}</td>
       <td>{{user.email}}</td>
+      <td [innerHtml]="getStatus(user)"></td>
       <td class="text-right">
         <button class="btn" (click)="edit($event, user)">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="btn ml-2" (click)="delete($event)">
+        <button class="btn ml-2" (click)="delete($event, user)">
           <i class="fas fa-trash-alt"></i>
         </button>
       </td>
