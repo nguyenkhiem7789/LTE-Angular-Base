@@ -119,4 +119,7 @@ export class UserComponent extends ModuleBaseComponent implements OnInit, AfterV
     });
   }
 
+  ngOnInit(): void {
+  }
+
 }

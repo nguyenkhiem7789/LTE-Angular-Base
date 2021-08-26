@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {ShareModule} from './share/share.module';
 import {FormsModule} from '@angular/forms';
+import {SignalrService} from './services/signalr.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
   ],
   providers: [
-    UserService
+    UserService,
+    SignalrService
   ],
   bootstrap: [AppComponent]
 })

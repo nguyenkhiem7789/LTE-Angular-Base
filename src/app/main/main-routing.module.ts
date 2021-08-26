@@ -22,6 +22,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../modules/emoji-mart/emoji-mart.module').then((m) => m.EmojiMartModule),
       },
+      {
+        path: 'signal-r',
+        loadChildren: () =>
+          import('../modules/signal-r/signal-r.module').then((m) => m.SignalRModule),
+      },
     ]
   },
 ];

@@ -5,7 +5,7 @@ import {catchError, finalize, tap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable()
-export class ModuleBaseComponent implements OnInit, OnDestroy {
+export class ModuleBaseComponent implements OnDestroy {
 
   protected unsubscribe: Subscription[] = [];
   public isLoading = false;
@@ -14,9 +14,6 @@ export class ModuleBaseComponent implements OnInit, OnDestroy {
     protected dialog: MatDialog,
     private snackBar: MatSnackBar
   ) { }
-
-  ngOnInit(): void {
-  }
 
   ngOnDestroy(): void {
     this.unsubscribe.forEach(sb => sb.unsubscribe());
