@@ -1,0 +1,13 @@
+<div class="user-pagination mt-5 mb-5">
+  <div class="mb-2">
+    Total: <strong>{{ totalRow }}</strong> records
+  </div>
+  <div>
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="totalRow"
+      (pageChange)="onPageChange($event)"
+    ></ngb-pagination>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {ModuleBaseComponent} from '../../module-base.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../../../services/user.service';
@@ -8,20 +8,21 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   selector: 'app-user-add-change-dialog',
   templateUrl: './user-add-change-dialog.component.html'
 })
-export class UserAddChangeDialogComponent extends ModuleBaseComponent implements OnInit {
+export class UserAddChangeDialogComponent extends ModuleBaseComponent implements OnInit, AfterViewInit {
 
   user = {
     id: this.data?.id ?? '',
     fullName: this.data?.fullName ?? '',
     email: this.data?.email ?? '',
-    password: this.data?.password ?? ''
+    password: this.data?.password ?? '',
+    status: this.data?.status ?? 1
   };
   isSubmit = false;
   isChange;
-  Status = {
+  StatusType = {
     Deleted: 0,
     Active: 1,
-    Change: 2
+    InActive: 2
   };
 
   constructor(
@@ -38,12 +39,34 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
     this.isChange = this.data?.fullName.length > 0;
   }
 
+  ngAfterViewInit(): void {
+    this.getDataInitChange();
+  }
+
   validateFullName(): boolean {
     return this.user.fullName.length > 0;
   }
 
   validatePassword(): boolean {
     return this.user.password.length > 0;
+  }
+
+  getDataInitChange(): void {
+    if (!this.isChange) {
+      return;
+    }
+    const request = {
+      id: this.user.id
+    };
+    this.action(this.service.getById(request), function(response) {
+      console.log(response);
+      const user = response.models;
+      if (user != null) {
+        this.user.fullName = user.fullName;
+        this.user.email = user.email;
+        this.user.status = +user.status;
+      }
+    }.bind(this));
   }
 
   addOrChangeUser(): void {
@@ -60,7 +83,7 @@ export class UserAddChangeDialogComponent extends ModuleBaseComponent implements
       fullName: this.user.fullName,
       email: this.user.email,
       password: this.user.password,
-      status: this.isChange ? this.Status.Change : this.Status.Active
+      status: +this.user.status
     };
     if (!this.isChange) {
       this.action(this.service.add(request), function(response) {

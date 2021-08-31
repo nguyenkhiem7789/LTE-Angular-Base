@@ -15,10 +15,19 @@
   <!-- Search -->
   <div class="row mb-4">
     <div class="col-4">
+      <label>Search:</label>
       <div class="form-outline">
-        <input type="search" class="form-control" placeholder="Search"
-               aria-label="Search" />
+        <input type="search" class="form-control" placeholder="key word" aria-label="Search" [(ngModel)]="keyword"/>
       </div>
+    </div>
+    <div class="col-2">
+      <label>Status:</label>
+      <select class="form-control" id="status" name="status" [(ngModel)]="status">
+        <option value=-1>Select one</option>
+        <option value=1>Active</option>
+        <option value=2>InActive</option>
+        <option value=0>Deleted</option>
+      </select>
     </div>
   </div>
 
@@ -50,4 +59,10 @@
     </tr>
     </tbody>
   </table>
+
+  <!-- Pagination -->
+  <div class="form-inline float-right mr-20">
+    <app-pagination (pageChange)="onPageChange($event)" [(ngModel)]="pageIndex" [pageSize]="pageSize"
+                   [totalRow]="totalRow" [isLoading]="isLoading"></app-pagination>
+  </div>
 </div>

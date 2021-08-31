@@ -20,13 +20,13 @@ import {SignalrService} from './services/signalr.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     MatDialogModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatSnackBarModule,
     ShareModule,
-    FormsModule,
   ],
   providers: [
     UserService,

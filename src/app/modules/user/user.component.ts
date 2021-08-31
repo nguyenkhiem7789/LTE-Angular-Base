@@ -12,12 +12,17 @@ import {AlertDialogComponent} from '../../share/alert-dialog/alert-dialog.compon
 })
 export class UserComponent extends ModuleBaseComponent implements OnInit, AfterViewInit {
 
+  keyword = '';
+  status = 1;
   users = [];
-  Status = {
+  StatusType = {
     Deleted: 0,
     Active: 1,
     InActive: 2
   };
+  pageIndex = 0;
+  pageSize = 20;
+  totalRow = 20;
 
   constructor(
     private service: UserService,
@@ -27,21 +32,30 @@ export class UserComponent extends ModuleBaseComponent implements OnInit, AfterV
     super(dialog, snackBar);
   }
 
+  ngOnInit(): void {
+  }
+
   ngAfterViewInit(): void {
     this.getListUser();
   }
 
   search(event: Event): void {
     event.preventDefault();
+    this.pageIndex = 0;
     this.getListUser();
   }
 
   getListUser(): void {
+    console.log(this.pageIndex);
     const request = {
-      keyword: ''
+      keyword: this.keyword,
+      status: +this.status,
+      pageIndex: this.pageIndex,
+      pageSize: this.pageSize
     };
     this.action(this.service.get(request), function(response) {
       console.log(response);
+      this.totalRow = response.totalRow;
       this.users = response.models;
     }.bind(this));
   }
@@ -50,7 +64,7 @@ export class UserComponent extends ModuleBaseComponent implements OnInit, AfterV
     const request = {
       id: user.id,
       fullName: user.fullName,
-      status: this.Status.Deleted
+      status: this.StatusType.Deleted
     };
     this.action(this.service.change(request), function(response) {
       console.log(response);
@@ -119,7 +133,9 @@ export class UserComponent extends ModuleBaseComponent implements OnInit, AfterV
     });
   }
 
-  ngOnInit(): void {
+  onPageChange(page): void {
+    this.pageIndex = page;
+    this.getListUser();
   }
 
 }

@@ -6,6 +6,8 @@ import { UserAddChangeDialogComponent } from './user-add-change-dialog/user-add-
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {ShareModule} from '../../share/share.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDialogModule,
     MatSnackBarModule,
     FormsModule,
+    ShareModule,
+    NgbModule
   ]
 })
 export class UserModule { }
