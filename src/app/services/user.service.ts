@@ -12,22 +12,22 @@ export class UserService {
   }
 
   get(request): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Users/Gets`, request);
+    return this.http.post('/Users/Gets', request);
   }
 
   add(request): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Users/Add`, request);
+    return this.http.post('/Users/Add', request);
   }
 
   change(request): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Users/Change`, request);
+    return this.http.post('/Users/Change', request);
   }
 
   getById(request): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Users/GetById`, request);
+    return this.http.post('/Users/GetById', request);
   }
 
   login(request): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Users/Login`, request);
+    return this.http.post('/Users/Login', request);
   }
 }

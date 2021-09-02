@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {LoginComponent} from './auth/login/login.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -12,6 +12,8 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {ShareModule} from './share/share.module';
 import {FormsModule} from '@angular/forms';
 import {SignalrService} from './services/signalr.service';
+import {httpInterceptorProviders} from './share/http-interceptors';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import {SignalrService} from './services/signalr.service';
     AppComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -29,9 +32,12 @@ import {SignalrService} from './services/signalr.service';
     ShareModule,
   ],
   providers: [
+    httpInterceptorProviders,
     UserService,
     SignalrService
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

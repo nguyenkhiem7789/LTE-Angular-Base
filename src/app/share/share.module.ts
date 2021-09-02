@@ -6,6 +6,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {FormsModule} from '@angular/forms';
 import { PaginationComponent } from './pagination/pagination.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {httpInterceptorProviders} from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -23,4 +24,4 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ]
 })
-export class ShareModule { }
+export class ShareModule {}

@@ -25,6 +25,7 @@
     "@microsoft/signalr": "^5.0.9",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "admin-lte": "^3.1.0",
+    "angular2-jwt": "^0.2.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
