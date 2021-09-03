@@ -8,12 +8,13 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserService} from './services/user.service';
 import {HttpClientModule} from '@angular/common/http';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ShareModule} from './share/share.module';
 import {FormsModule} from '@angular/forms';
 import {SignalrService} from './services/signalr.service';
 import {httpInterceptorProviders} from './share/http-interceptors';
 import {CommonModule} from '@angular/common';
+import {NotificationService} from './services/notification.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {CommonModule} from '@angular/common';
   providers: [
     httpInterceptorProviders,
     UserService,
-    SignalrService
+    SignalrService,
+    NotificationService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

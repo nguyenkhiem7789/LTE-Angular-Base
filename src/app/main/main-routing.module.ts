@@ -18,6 +18,11 @@ const routes: Routes = [
           import('../modules/role/role.module').then((m) => m.RoleModule),
       },
       {
+        path: 'notification',
+        loadChildren: () =>
+          import('../modules/notification/notification.module').then((m) => m.NotificationModule),
+      },
+      {
         path: 'emoji-mart',
         loadChildren: () =>
           import('../modules/emoji-mart/emoji-mart.module').then((m) => m.EmojiMartModule),

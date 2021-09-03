@@ -32,7 +32,7 @@ export class SignalrService {
   }
 
   sendMessage(request): Observable<any> {
-    return this.http.post('https://localhost:44393/Notification/Test', request);
+    return this.http.post('/Notification/Test', request);
   }
 
 }

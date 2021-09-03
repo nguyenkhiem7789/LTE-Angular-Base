@@ -23,7 +23,7 @@ export class ModuleBaseComponent implements OnDestroy {
                 isCheckLoading = true,
                 isOpenLogin = true,
                 processFailFunc = null,
-                isReload = false, isReturnResponse = false) {
+                isReload = false, isReturnResponse = false): void {
     if (isCheckLoading) {
 
     }
