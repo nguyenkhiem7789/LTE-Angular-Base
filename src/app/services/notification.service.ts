@@ -13,6 +13,10 @@ export class NotificationService {
     return this.http.post('/Notification/Add', request);
   }
 
+  change(request): Observable<any> {
+    return this.http.post('/Notification/Change', request);
+  }
+
   get(request): Observable<any> {
     return this.http.post('/Notification/Gets', request);
   }

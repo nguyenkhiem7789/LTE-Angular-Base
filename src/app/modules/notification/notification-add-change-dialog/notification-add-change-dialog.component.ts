@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {UserService} from '../../../services/user.service';
 import {ModuleBaseComponent} from '../../module-base.component';
 import {NotificationService} from '../../../services/notification.service';
 
@@ -12,10 +11,12 @@ import {NotificationService} from '../../../services/notification.service';
 export class NotificationAddChangeDialogComponent extends ModuleBaseComponent implements OnInit {
 
   notification = {
+    id: '',
     title: '',
     content: ''
   };
   isSubmit = false;
+  isChange;
 
   constructor(
     private service: NotificationService,
@@ -28,6 +29,7 @@ export class NotificationAddChangeDialogComponent extends ModuleBaseComponent im
   }
 
   ngOnInit(): void {
+    this.isChange = this.data?.title.length > 0;
   }
 
   validateTitle(): boolean {
@@ -39,7 +41,30 @@ export class NotificationAddChangeDialogComponent extends ModuleBaseComponent im
   }
 
   addOrChangeNotification(): void {
-
+    this.isSubmit = true;
+    if (!this.validateTitle()) {
+      return;
+    }
+    if (!this.validateContent()) {
+      return;
+    }
+    this.isSubmit = false;
+    const request = {
+      id: this.notification.id,
+      title: this.notification.title,
+      content: this.notification.content
+    };
+    if (!this.isChange) {
+      this.action(this.service.add(request), function(response) {
+        console.log(response);
+        this.dialogRef.close(true);
+      }.bind(this));
+    } else {
+      this.action(this.service.change(request), function(response) {
+        console.log(response);
+        this.dialogRef.close(true);
+      }.bind(this));
+    }
   }
 
   close(): void {
