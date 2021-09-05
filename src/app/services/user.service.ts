@@ -15,6 +15,10 @@ export class UserService {
     return this.http.post('/Users/Gets', request);
   }
 
+  getAll(): Observable<any> {
+    return this.http.get('/Users/GetAll');
+  }
+
   add(request): Observable<any> {
     return this.http.post('/Users/Add', request);
   }

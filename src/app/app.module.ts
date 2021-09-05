@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ShareModule} from './share/share.module';
 import {FormsModule} from '@angular/forms';
-import {SignalrService} from './services/signalr.service';
+import {SignalRService} from './services/signal-r.service';
 import {httpInterceptorProviders} from './share/http-interceptors';
 import {CommonModule} from '@angular/common';
 import {NotificationService} from './services/notification.service';
@@ -35,7 +35,7 @@ import {NotificationService} from './services/notification.service';
   providers: [
     httpInterceptorProviders,
     UserService,
-    SignalrService,
+    SignalRService,
     NotificationService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

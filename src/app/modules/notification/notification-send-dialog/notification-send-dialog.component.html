@@ -1,0 +1,14 @@
+<h3 mat-dialog-title>Send Message</h3>
+<mat-dialog-content>
+  <form>
+    <div class="form-group">
+      <select class="form-control" [(ngModel)]="userId" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let item of users" [ngValue]="item.id">{{item.fullName}}</option>
+      </select>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="submit" class="btn btn-primary" (click)="send()">Submit</button>
+  <button class="btn btn-secondary ml-2" (click)="close()">Close</button>
+</mat-dialog-actions>

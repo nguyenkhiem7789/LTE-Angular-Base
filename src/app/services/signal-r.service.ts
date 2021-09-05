@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class SignalrService {
+export class SignalRService {
 
   private connection: HubConnection;
 
@@ -29,6 +29,14 @@ export class SignalrService {
       console.log(message);
       func(message);
     });
+  }
+
+  public getConnectionId(): string {
+    return this.connection.connectionId;
+  }
+
+  public async disconnect() {
+    await this.connection.stop();
   }
 
   sendMessage(request): Observable<any> {

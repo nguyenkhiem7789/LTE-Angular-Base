@@ -3,7 +3,7 @@ import {ModuleBaseComponent} from '../module-base.component';
 import {UserService} from '../../services/user.service';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {SignalrService} from '../../services/signalr.service';
+import {SignalRService} from '../../services/signal-r.service';
 
 @Component({
   selector: 'app-signal-r',
@@ -15,7 +15,7 @@ export class SignalRComponent extends ModuleBaseComponent implements OnInit {
 
   constructor(
     private service: UserService,
-    private signalService: SignalrService,
+    private signalService: SignalRService,
     dialog: MatDialog,
     snackBar: MatSnackBar
   ) {

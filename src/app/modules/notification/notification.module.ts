@@ -1,19 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NotificationComponent } from './notification.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NotificationComponent} from './notification.component';
 import {RouterModule} from '@angular/router';
-import {UserComponent} from '../user/user.component';
 import {FormsModule} from '@angular/forms';
 import {ShareModule} from '../../share/share.module';
-import { NotificationAddChangeDialogComponent } from './notification-add-change-dialog/notification-add-change-dialog.component';
+import {NotificationAddChangeDialogComponent} from './notification-add-change-dialog/notification-add-change-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
-
+import {NotificationSendDialogComponent} from './notification-send-dialog/notification-send-dialog.component';
 
 @NgModule({
   declarations: [
     NotificationComponent,
-    NotificationAddChangeDialogComponent
+    NotificationAddChangeDialogComponent,
+    NotificationSendDialogComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     ]),
     FormsModule,
     ShareModule,
-    MatDialogModule,
+    MatDialogModule
   ]
 })
 export class NotificationModule { }

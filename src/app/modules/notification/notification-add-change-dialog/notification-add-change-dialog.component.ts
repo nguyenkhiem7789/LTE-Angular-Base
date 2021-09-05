@@ -11,9 +11,10 @@ import {NotificationService} from '../../../services/notification.service';
 export class NotificationAddChangeDialogComponent extends ModuleBaseComponent implements OnInit {
 
   notification = {
-    id: '',
-    title: '',
-    content: ''
+    id: this.data?.id ?? '',
+    title: this.data?.title ?? '',
+    content: this.data?.content ?? '',
+    status: this.data?.status ?? 1
   };
   isSubmit = false;
   isChange;
@@ -52,7 +53,8 @@ export class NotificationAddChangeDialogComponent extends ModuleBaseComponent im
     const request = {
       id: this.notification.id,
       title: this.notification.title,
-      content: this.notification.content
+      content: this.notification.content,
+      status: +this.notification.status
     };
     if (!this.isChange) {
       this.action(this.service.add(request), function(response) {
@@ -68,6 +70,6 @@ export class NotificationAddChangeDialogComponent extends ModuleBaseComponent im
   }
 
   close(): void {
-
+    this.dialogRef.close(true);
   }
 }

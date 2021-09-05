@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <!-- Header -->
   <nav class="navbar navbar-expand-lg">
-    <h3 class="navbar-brand">Users Management</h3>
+    <h3 class="navbar-brand">Notification Management</h3>
     <div class="collapse navbar-collapse">
       <div class="navbar-nav mr-auto">
       </div>
       <form class="form-inline">
         <button class="btn btn-primary" type="submit" (click)="search()">Search</button>
-        <button class="btn btn-info ml-2" type="submit" (click)="create()">Add User</button>
+        <button class="btn btn-info ml-2" type="submit" (click)="create()">Add Notification</button>
       </form>
     </div>
   </nav>
@@ -36,6 +36,7 @@
     <thead>
     <tr>
       <th scope="col">STT</th>
+      <th scope="col">Title</th>
       <th scope="col">Content</th>
       <th scope="col">Date</th>
       <th scope="col">Status</th>
@@ -45,6 +46,7 @@
     <tbody>
     <tr *ngFor="let notification of notifications; let i = index" class="table-row">
       <td>{{i + 1}}</td>
+      <td>{{notification.title}}</td>
       <td>{{notification.content}}</td>
       <td>{{notification.date}}</td>
       <td [innerHtml]="getStatus(notification)"></td>
@@ -55,6 +57,9 @@
         <button class="btn ml-2" (click)="delete(notification)">
           <i class="fas fa-trash-alt"></i>
         </button>
+        <button class="btn" (click)="send(notification)">
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </td>
     </tr>
     </tbody>
@@ -62,7 +67,7 @@
 
   <!-- Pagination -->
   <div class="form-inline float-right mr-20">
-    <app-pagination (pageChange)="onPageChange()" [(ngModel)]="pageIndex" [pageSize]="pageSize"
+    <app-pagination (pageChange)="onPageChange($event)" [(ngModel)]="pageIndex" [pageSize]="pageSize"
                     [totalRow]="totalRow" [isLoading]="isLoading"></app-pagination>
   </div>
 </div>

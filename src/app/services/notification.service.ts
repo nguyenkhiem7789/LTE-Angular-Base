@@ -20,4 +20,9 @@ export class NotificationService {
   get(request): Observable<any> {
     return this.http.post('/Notification/Gets', request);
   }
+
+  send(request): Observable<any> {
+    return this.http.post('/Notification/Send', request);
+  }
+
 }
