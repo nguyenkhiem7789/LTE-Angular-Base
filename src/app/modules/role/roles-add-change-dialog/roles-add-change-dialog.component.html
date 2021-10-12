@@ -1,0 +1,22 @@
+<h3 mat-dialog-title>{{isChange ? 'Change Notification' : 'Add Notification'}}</h3>
+<mat-dialog-content>
+  <form>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" placeholder="Enter title" [(ngModel)]="this.role.name" [ngModelOptions]="{standalone: true}"
+             [class.is-invalid]="!this.validateName() && this.isSubmit">
+      <span *ngIf="!this.validateName() && this.isSubmit" class="invalid-feedback">Title is required</span>
+    </div>
+    <div class="form-group col-6">
+      <label>Status</label>
+      <select class="form-control" id="status" name="status" [(ngModel)]="this.role.status">
+        <option value=1>Active</option>
+        <option value=2>InActive</option>
+      </select>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="submit" class="btn btn-primary" (click)="addOrChangeRole()">Submit</button>
+  <button class="btn btn-secondary ml-2" (click)="close()">Close</button>
+</mat-dialog-actions>

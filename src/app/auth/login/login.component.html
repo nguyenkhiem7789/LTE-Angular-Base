@@ -24,6 +24,15 @@
                 <input Placeholder="Enter Password" type="password" class="form-control" [(ngModel)]="this.user.password" [ngModelOptions]="{ standalone: true }">
               </div>
               <button type="submit" class="btn btn-primary col-12 button-div m-auto" (click)="this.onLogin()">Login</button>
+              <select>
+                <optgroup label="Northern America">
+                  <option value="newyork">New York</option>
+                  <option value="seattle">Seattle</option>
+                </optgroup>
+                <optgroup label="Asia">
+                  <option value="hongkong">Hong Kong</option>
+                </optgroup>
+              </select>
             </form>
           </div>
         </div>
